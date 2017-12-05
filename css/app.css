@@ -17,7 +17,7 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #000000;
     font-family: 'Coda', cursive;
 }
 
@@ -26,6 +26,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: #ffff00;
+    text-shadow: 1px 1px #000000;
 }
 
 h1 {
@@ -41,10 +43,9 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 12px 15px 20px 0 #00000080;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -55,7 +56,7 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
+    background: radial-gradient(circle, #900090, black); /* Standard syntax (must be last) */
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -64,17 +65,21 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    position: relative;
+    transition: transform 250ms;
+    transform: rotateY( 180deg );
 }
 
 .deck .card.open {
     transform: rotateY(0);
-    background: #02b3e4;
+    background: radial-gradient(circle, blue, black); /* Standard syntax (must be last) */
     cursor: default;
 }
 
 .deck .card.wrong {
+    transform: rotateY(0);
     font-size: 33px;
-    background: #ff0000;
+    background: radial-gradient(circle, black, red);
 }
 
 .deck .card.show {
@@ -83,7 +88,7 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: radial-gradient(circle, black, green); /* Standard syntax (must be last) */
     font-size: 33px;
 }
 
@@ -140,13 +145,8 @@ h1 {
     margin: auto;
     padding: 0;
     border-radius: 10px;
-    /*border: 1px solid #888;*/
-
     width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    /*box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);*/
-
-
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -187,7 +187,10 @@ h1 {
     border-top-right-radius: 10px;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+    padding: 2px 16px;
+    text-align: center;
+}
 
 .modal-footer {
     padding: 2px 16px;
@@ -195,4 +198,10 @@ h1 {
     color: white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    color: #aaaaaa;
+    text-shadow: 1px 1px #000000;
 }
