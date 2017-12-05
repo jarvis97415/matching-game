@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 /*jslint browser: true, devel: true */
 // Define main game variable
-let cardIndex, lastIndex, matches, moveCount, cardPick;
+let cardIndex, lastIndex, matches, moveCount, cardPick, stars;
 let noclick = false;
 let startTimer = false;
 // Define game sound effects
@@ -43,6 +43,27 @@ let seconds, minutes;
 let openCards = [];
 // Define all available playing cards
 let allCards = [
+    "em-avocado",
+    "em-alarm_clock",
+    "em-8ball",
+    "em-baby_chick",
+    "em-banana",
+    "em-barber",
+    "em-bat",
+    "em-bee",
+    "em-bicyclist",
+    "em-biohazard_sign",
+    "em-cake",
+    "em-crab",
+    "em-computer",
+    "em-rocket",
+    "em-water_buffalo",
+    "em-bouquet",
+    "em-cat",
+    "em-chipmunk",
+    "em-mushroom",
+    "em-old_key",
+    "em-pie",
     "em-diamonds",
     "em-airplane",
     "em-anchor",
@@ -79,6 +100,7 @@ function initGame() {
     // Stop timer if not running
     clearInterval(timerVar);
     // Reset variables in prep to begin game
+    stars = 3;
     minutes = 0;
     seconds = 0;
     startTimer = false;
@@ -99,9 +121,10 @@ function initGame() {
     shuffle(cards);
     // Clear score board
     $('.deck').empty();
-    $('.stars').empty();
     $('#timer').html('0:00');
     $('body > div > section > span').text('0');
+    // Add 3 stars to start out
+    $('.stars').html('<li><i class="em em-star"></li><li><i class="em em-star"></li><li><i class="em em-star"></li>');
     // Draw shuffled cards in play field
     for (let index = 0; index < cards.length; index++){
         $('.deck').append('<li class="card"><i class="em ' + cards[index] + '"></i></li>');
@@ -134,7 +157,19 @@ function gameTimer() {
         }
         // Display timer in window
         timer.innerHTML = minutes + ":" + seconds;
-        // End game after 2 minutes
+        // Remove stars according to play or lose game if time is 2 minutes
+        if ((minutes === 0) && (seconds === 30) || (moveCount === 25)) {
+            stars = 2;
+            $('.stars').html('<li><i class="em em-star"></li><li><i class="em em-star"></li>');
+        }
+        if ((minutes === 1) && (seconds === 0) || (moveCount === 35)) {
+            stars = 1;
+            $('.stars').html('<li><i class="em em-star"></li>');
+        }
+        if ((minutes === 1) && (seconds === 30) || (moveCount === 45)) {
+            stars = 0;
+            $('.stars').empty();
+        }
         if (minutes === 2) {youLost();}
 }
 // Declare function for not a match
@@ -188,8 +223,6 @@ function lockMatch(lastcard,curcard) {
         "use strict";
         matchSound.play();
     }, 250);
-    // Add a star for matched pairs
-    $('.stars').append('<li><i class="em em-star"></li>');
     // Indicate cards match with green background
     $('li:nth-child(' + curcard + ')').toggleClass('match');
     $('li:nth-child(' + lastcard + ')').toggleClass('match');
@@ -229,7 +262,7 @@ function youWon() {
     // Clear modal body text
     $('#theModal > div > div.modal-body').empty();
     // Display time and move counter information
-    $('#theModal > div > div.modal-body').html('<p>Your time was ' + minutes + ':' + seconds + '</p><p>It took you ' + moveCount + ' moves to complete the game</p>');
+    $('#theModal > div > div.modal-body').html('<p>Your time was ' + minutes + ':' + seconds + '</p><p>It took you ' + moveCount + ' moves to complete the game</p><p>Your Star rating is ' + stars + '!');
     // Display modal
     modal.style.display = "block";
     // Detect close button click in modal to continue game
