@@ -4,7 +4,19 @@ Your favorite childhood concentration game - Now in a web browser!
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The object of the game is to find 8 matched pairs in as little time as you can.
+Timer will begin with the first card you click on.  You only have 2 minutes to find 8 pairs.  
+
+A star rating system is used to rate your performance.
+
+Complete the game in under:
+  30 seconds and or 25 moves - 3 stars
+  1 minute and or 40 moves - 2 stars
+  2 minutes - 1 star
+
+This game features 3 background music tracks and 3 background images.
+There are a total of 45 different images randomly chosen before the game begins.
+The gradient colors used in the playfield are randomly chosen on each restart.
 
 ### Prerequisites
 
@@ -20,6 +32,13 @@ A modern web browser capable of the latest javascript implimentation.
 
 Copy files and directory structure to your www root folder or sub folder.
 Link to the wwwroot\matching-game\index.html location from another page.
+
+## Built With
+
+* [EMOJI CSS](http://www.afeld.github.io/emoji-css/) - Images used for cards
+* [Google Fonts](https://fonts.google.com/) - Coda Font
+* [jQuery 3.2.1](http://jquery.com/) - HTML document traversal and manipulation
+* [jQuery UI 1.12.1]{http://jquery.com/) - For possible future use.
 
 ## Versioning
 
