@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 /*jslint browser: true, devel: true */
 // Define main game variable
-let cardIndex, lastIndex, matches, moveCount, cardPick, stars;
+let cardIndex, lastIndex, matches, clickCount, moveCount, cardPick, stars;
 let noclick = false;
 let startTimer = false;
 // Define game sound effects
@@ -107,6 +107,7 @@ function initGame() {
     matches = 0;
     cardPick = 0;
     moveCount = 0;
+    clickCount = 0;
     // Play shuffle sound
     shuffleSound.play();
     // Call function to shuffle all playing cards
@@ -158,11 +159,11 @@ function gameTimer() {
         // Display timer in window
         timer.innerHTML = minutes + ":" + seconds;
         // Remove stars according to play or lose game if time is 2 minutes
-        if ((minutes === 0) && (seconds === 30) || (moveCount === 25)) {
+        if ((minutes === 0) && (seconds === 30) || (moveCount === 5)) {
             stars = 2;
             $('.stars').html('<li><i class="em em-star"></li><li><i class="em em-star"></li>');
         }
-        if ((minutes === 1) && (seconds === 0) || (moveCount === 40)) {
+        if ((minutes === 1) && (seconds === 0) || (moveCount === 10)) {
             stars = 1;
             $('.stars').html('<li><i class="em em-star"></li>');
         }
@@ -170,6 +171,8 @@ function gameTimer() {
 }
 // Declare function for not a match
 function clearLastCards(lastcard,curcard) {
+    // Increment move counter
+    moveCount++;
     // Play wrong match sound
     setTimeout(function () {
         "use strict";
@@ -236,18 +239,8 @@ function lockMatch(lastcard,curcard) {
 }
 // Declare function to count moves
 function countMove() {
-    // Increment move counter
-    moveCount++;
     // Display move counter in window
     $('body > div > section > span').text(moveCount);
-    // Start timer and play music on first card click
-    if (moveCount === 1) {
-        timerVar = setInterval(gameTimer, 1000);
-        setTimeout(function () {
-            "use strict";
-            music.play();
-        }, 1000);
-    }
 }
 // Declare function for winning game
 function youWon() {
@@ -258,7 +251,7 @@ function youWon() {
     // Clear modal body text
     $('#theModal > div > div.modal-body').empty();
     // Display time and move counter information
-    $('#theModal > div > div.modal-body').html('<p>Your time was ' + minutes + ':' + seconds + '</p><p>It took you ' + moveCount + ' moves to complete the game</p><p>Your Star rating is ' + stars + '!');
+    $('#theModal > div > div.modal-body').html('<p>Your time was ' + minutes + ':' + seconds + '</p><p>You made ' + moveCount + ' mismatched moves.</p><p>Your Star rating is ' + stars + '!');
     // Display modal
     modal.style.display = "block";
     // Detect close button click in modal to continue game
@@ -349,6 +342,16 @@ function mainLoop() {
         if ($('li:nth-child(' + cardIndex + ')').hasClass('open')) {
             return;
         } else displayCard(cardIndex);
+        // Increment click counter
+        clickCount++;
+        // Start timer and play music on first card click
+        if (clickCount === 1) {
+            timerVar = setInterval(gameTimer, 1000);
+            setTimeout(function () {
+                "use strict";
+                music.play();
+            }, 1000);
+        }
         // add the card to a *list* of "open" cards
         addOpenCardList(cardIndex);
         // if the list already has another card, check to see if the two cards match
