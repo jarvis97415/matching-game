@@ -5,13 +5,15 @@ Your favorite childhood concentration game - Now in a web browser!
 ## Getting Started
 
 The object of the game is to find 8 matched pairs in as little time as you can.
-Timer will begin with the first card you click on.  You only have 2 minutes to find 8 pairs.  
+Timer will begin with the first card you click on.  You only have 2 minutes to find 8 pairs.
+
+The moves counter will increment on every failed match.
 
 A star rating system is used to rate your performance.
 
-Complete the game in under 30 seconds and or 25 moves - 3 stars.
-If it is less then 1 minute and or 40 moves - 2 stars.
-In under 2 minutes - 1 star.
+Complete the game in under 30 seconds and or 5 mismatches - 3 stars.
+If it is less then 1 minute and 10 or more mismatches - 2 stars.
+Finish in under 2 minutes - 1 star.
 
 This game features 3 background music tracks and 3 background images.
 There are a total of 45 different images randomly chosen before the game begins.
