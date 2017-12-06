@@ -34,14 +34,14 @@ Link to the wwwroot\matching-game\index.html location from another page.
 
 ## Built With
 
-* [EMOJI CSS](http://www.afeld.github.io/emoji-css/) - Images used for cards
+* [EMOJI CSS](https://afeld.github.io/emoji-css/) - Images used for cards
 * [Google Fonts](https://fonts.google.com/) - Coda Font
 * [jQuery 3.2.1](http://jquery.com/) - HTML document traversal and manipulation
 * [jQuery UI 1.12.1](http://jquery.com/) - For possible future use.
 
 ## Versioning
 
-Early version 0.9
+Version 1.0
 
 ## Author
 
