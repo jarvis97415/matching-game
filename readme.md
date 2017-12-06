@@ -9,10 +9,9 @@ Timer will begin with the first card you click on.  You only have 2 minutes to f
 
 A star rating system is used to rate your performance.
 
-Complete the game in under:
-  30 seconds and or 25 moves - 3 stars
-  1 minute and or 40 moves - 2 stars
-  2 minutes - 1 star
+Complete the game in under 30 seconds and or 25 moves - 3 stars.
+If it is less then 1 minute and or 40 moves - 2 stars.
+In under 2 minutes - 1 star.
 
 This game features 3 background music tracks and 3 background images.
 There are a total of 45 different images randomly chosen before the game begins.
