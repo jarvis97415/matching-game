@@ -162,13 +162,9 @@ function gameTimer() {
             stars = 2;
             $('.stars').html('<li><i class="em em-star"></li><li><i class="em em-star"></li>');
         }
-        if ((minutes === 1) && (seconds === 0) || (moveCount === 35)) {
+        if ((minutes === 1) && (seconds === 0) || (moveCount === 40)) {
             stars = 1;
             $('.stars').html('<li><i class="em em-star"></li>');
-        }
-        if ((minutes === 1) && (seconds === 30) || (moveCount === 45)) {
-            stars = 0;
-            $('.stars').empty();
         }
         if (minutes === 2) {youLost();}
 }
